@@ -1,4 +1,4 @@
-http://localhost {
+:80 {
     handle / {
         root /app/html
         file_server
