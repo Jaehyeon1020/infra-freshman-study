@@ -1,0 +1,31 @@
+version: "3"
+services:
+  caddy:
+    image: caddy
+    container_name: caddy
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./html:/app/html
+    depends_on:
+      - express-1
+      - express-2
+
+  express-1:
+    build: .
+    container_name: express1
+    volumes:
+      - .:/app
+    expose:
+      - "3000"
+    command: ["npm", "start"]
+
+  express-2:
+    build: .
+    container_name: express2
+    volumes:
+      - .:/app
+    expose:
+      - "3000"
+    command: ["npm", "start"]

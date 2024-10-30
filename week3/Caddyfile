@@ -1,0 +1,10 @@
+http://localhost {
+    handle / {
+        root /app/html
+        file_server
+    }
+
+    handle /* {
+        reverse_proxy express-1:3000 express-2:3000
+    }
+}
